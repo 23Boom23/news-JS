@@ -5,7 +5,7 @@
     "scripts": {
         "start": "webpack serve --config ./webpack.config.js --env mode=dev",
         "build": "webpack --config ./webpack.config.js --env mode=prod",
-        "deploy": "npm run build && gh-pages -d dist",
+        "deploy": "webpack --config ./webpack.config.js --env mode=prod && gh-pages -d dist",
         "lint": "eslint . --ext .ts",
         "typecheck": "tsc --noEmit"
     },
