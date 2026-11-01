@@ -1,35 +1,54 @@
-body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+    color-scheme: light;
+    font-family: 'DM Sans', Arial, sans-serif;
+    color: #202822;
+    background: #f6f4ee;
+    font-synthesis: none;
 }
 
-header {
-    padding: 10px 30px;
+* { box-sizing: border-box; }
+body { min-width: 320px; margin: 0; }
+a { color: inherit; }
+button { font: inherit; }
+
+.page-shell { max-width: 1520px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 76px); }
+.site-header { min-height: 102px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #d8ddd5; }
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-size: 17px; font-weight: 700; letter-spacing: .14em; }
+.brand__mark { width: 39px; height: 39px; display: grid; place-items: center; color: #f6f4ee; background: #245c45; border-radius: 50%; font-family: 'Playfair Display', Georgia, serif; font-size: 22px; letter-spacing: 0; }
+.site-header__label { color: #69736c; font-size: 13px; letter-spacing: .08em; }
+.hero { min-height: 440px; display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 68px 0 76px; border-bottom: 1px solid #d8ddd5; }
+.eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 24px; color: #2c7655; font-size: 11px; font-weight: 700; letter-spacing: .2em; }
+.eyebrow__dot { width: 8px; height: 8px; border-radius: 50%; background: #d7764b; }
+.hero h1 { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(58px, 7.7vw, 116px); font-weight: 600; line-height: .98; letter-spacing: -.055em; }
+.hero h1 em { color: #2b7855; font-weight: 600; }
+.hero__intro { max-width: 480px; margin: 28px 0 0; color: #69736c; font-size: clamp(15px, 1.5vw, 18px); line-height: 1.65; }
+.hero__aside { align-self: stretch; min-width: 225px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
+.hero__issue { color: #7c857c; font-size: 12px; letter-spacing: .18em; }
+.hero__circle { width: clamp(145px, 16vw, 245px); aspect-ratio: 1; display: grid; place-items: center; border: 1px solid #9bb6a5; border-radius: 50%; color: #9bb6a5; font: italic 150px/.8 'Playfair Display', Georgia, serif; transform: rotate(-16deg); }
+.feed { padding: 62px 0 88px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.section-heading .eyebrow { margin-bottom: 8px; }
+.section-heading h2 { margin: 0; font: 600 clamp(36px, 4.1vw, 58px)/1.1 'Playfair Display', Georgia, serif; letter-spacing: -.04em; }
+.section-heading__aside { margin: 0 0 8px; color: #7b847c; font-size: 13px; }
+.status { margin: 28px 0; padding: 22px 24px; border: 1px solid #d8ddd5; border-radius: 10px; background: #fffdf8; color: #46574b; }
+.status[hidden] { display: none; }
+.site-footer { min-height: 110px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid #d8ddd5; color: #69736c; font-size: 12px; }
+.site-footer p { line-height: 1.8; }
+.site-footer a { text-underline-offset: 3px; }
+.school-link { flex: none; }
+.school-link img { display: block; width: 75px; height: 40px; object-fit: contain; }
+
+@media (max-width: 700px) {
+    .site-header { min-height: 75px; }
+    .site-header__label, .hero__aside, .section-heading__aside { display: none; }
+    .hero { min-height: 0; padding: 66px 0; }
+    .feed { padding: 48px 0 64px; }
+    .site-footer { padding: 25px 0; }
 }
 
-header h1 {
-    font-size: 40px;
-    font-weight: 800;
-}
-
-footer {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
-}
-footer .copyright a {
-    color: #444;
-}
-footer .copyright a:hover {
-    color: #555;
-}
-footer .copyright:before {
-    content: '©';
+@media (max-width: 420px) {
+    .hero h1 { font-size: 54px; }
+    .site-footer { align-items: flex-start; flex-direction: column; gap: 12px; }
 }

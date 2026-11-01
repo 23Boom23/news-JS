@@ -1,22 +1,25 @@
 {
-    "name": "NewsJS",
+    "name": "newsroom-typescript",
     "version": "1.0.0",
-    "description": "",
-    "main": "webpack.base.config.js",
+    "description": "Responsive TypeScript news reader based on RSSchool News JS",
     "scripts": {
-        "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
+        "start": "webpack serve --config ./webpack.config.js --env mode=dev",
         "build": "webpack --config ./webpack.config.js --env mode=prod",
-        "lint": "eslint . --ext .ts"
+        "lint": "eslint . --ext .ts",
+        "typecheck": "tsc --noEmit"
     },
     "repository": {
         "type": "git",
         "url": ""
     },
     "keywords": [],
-    "author": "Aleh Serhiyenia",
+    "author": "23boom23",
     "license": "ISC",
     "homepage": "",
     "devDependencies": {
+        "@types/node": "^26.6.6",
+        "@typescript-eslint/eslint-plugin": "^8.72.1",
+        "@typescript-eslint/parser": "^8.72.1",
         "clean-webpack-plugin": "^4.0.0",
         "copy-webpack-plugin": "^12.0.2",
         "css-loader": "^6.10.0",
@@ -28,6 +31,8 @@
         "html-webpack-plugin": "^5.6.0",
         "prettier": "3.2.5",
         "style-loader": "^3.3.4",
+        "ts-loader": "^9.6.2",
+        "typescript": "^6.0.3",
         "webpack": "^5.90.1",
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^5.0.0",
