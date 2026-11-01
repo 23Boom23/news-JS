@@ -1,5 +1,7 @@
 # Newsroom
 
+[Live application](https://23boom23.github.io/news-JS/) · [Source repository](https://github.com/23Boom23/news-JS)
+
 A responsive news reader migrated from the [RSSchool News JS starter](https://github.com/rolling-scopes-school/news-JS) to strict TypeScript. It displays publishers and up to ten articles from the selected source.
 
 ## Run locally
@@ -37,4 +39,4 @@ The starter's CSS and article/source templates are retained. The application add
 
 ## Repository workflow
 
-For the course submission, fork the original repository into your GitHub account and point `origin` at that fork. Push the `news-api` branch, then run `npm run deploy` to publish `dist/` to the fork's `gh-pages` branch. Open a pull request **from `news-api` to `main` in your own fork**. Keep the pull request open for cross-check and submit its URL in RS App. Do not merge it before review.
+This repository is a public fork of the starter. Development is on `news-api`; `main` retains the starter, and `gh-pages` contains the production build. Keep the pull request from `news-api` to `main` open for cross-check.

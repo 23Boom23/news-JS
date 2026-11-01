@@ -11,12 +11,12 @@
     },
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/23Boom23/news-JS.git"
     },
     "keywords": [],
     "author": "23boom23",
     "license": "ISC",
-    "homepage": "",
+    "homepage": "https://23boom23.github.io/news-JS/",
     "devDependencies": {
         "@types/node": "^26.6.6",
         "@typescript-eslint/eslint-plugin": "^8.72.1",
