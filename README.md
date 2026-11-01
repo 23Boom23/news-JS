@@ -13,15 +13,15 @@ npm start
 
 Open the address printed by webpack dev server. With no API key, the app uses the proxy's static `/mocks/sources` and `/mocks/everything` endpoints. That article dataset currently contains stories for only one publisher, so other sources can show an empty state. The mock is useful for development without spending News API requests.
 
-To use live news, set environment variables **before** `npm start` or `npm run build`:
+To use live news, copy `.env.example` to `.env` and replace the example key with your News API key:
 
 ```powershell
-$env:API_URL = 'https://rss-news-api.onrender.com/'
-$env:API_KEY = 'your-news-api-key'
+Copy-Item .env.example .env
+# Edit API_KEY in .env, then run:
 npm start
 ```
 
-The client uses the proxy's `/sources` and `/everything` endpoints when a key is present. The key is embedded in the browser bundle, so use a key intended for this public client and do not commit it to the repository.
+The client uses the proxy's `/sources` and `/everything` endpoints when a key is present. `.env` is ignored by Git. The key is embedded in the browser bundle, so use a key intended for this public client and do not commit it to the repository.
 
 ## Checks
 

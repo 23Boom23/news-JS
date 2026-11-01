@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+require('dotenv').config({ path: path.resolve(__dirname, '.env'), quiet: true });
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
