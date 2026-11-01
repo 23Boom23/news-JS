@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { NewsSource, SourcesResponse } from '../../types';
+import { ArticlesResponse, SourcesResponse } from '../../types';
 
 class App {
     private readonly controller: AppController = new AppController();
@@ -29,18 +29,11 @@ class App {
     }
 
     private async loadSources(): Promise<void> {
-        this.view.setStatus('Loading sources…');
         try {
             const response: SourcesResponse = await this.controller.getSources();
-            const sources: ReadonlyArray<Readonly<NewsSource>> = response.sources;
-            this.view.drawSources(sources);
-            if (sources.length > 0) {
-                await this.showNews(sources[0].id);
-            } else {
-                this.view.setStatus('No sources are available.');
-            }
+            this.view.drawSources(response.sources);
         } catch (error: unknown) {
-            this.view.setStatus(this.errorMessage(error));
+            console.error(error);
         }
     }
 
@@ -48,18 +41,13 @@ class App {
         const currentRequest: number = ++this.requestId;
         this.view.selectSource(sourceId);
         this.view.clearNews();
-        this.view.setStatus('Loading articles…');
         try {
-            const response = await this.controller.getNews(sourceId);
+            const response: ArticlesResponse = await this.controller.getNews(sourceId);
             if (currentRequest !== this.requestId) return;
             this.view.drawNews(response.articles);
         } catch (error: unknown) {
-            if (currentRequest === this.requestId) this.view.setStatus(this.errorMessage(error));
+            if (currentRequest === this.requestId) console.error(error);
         }
-    }
-
-    private errorMessage(error: unknown): string {
-        return error instanceof Error ? `Unable to load news: ${error.message}` : 'Unable to load news.';
     }
 }
 

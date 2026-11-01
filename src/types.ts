@@ -8,10 +8,6 @@ export enum NewsEndpoint {
 export interface NewsSource {
     id: string;
     name: string;
-    description?: string;
-    category?: string;
-    language?: string;
-    country?: string;
 }
 
 export interface Article {
@@ -22,7 +18,6 @@ export interface Article {
     url: string;
     urlToImage: string | null;
     publishedAt: string;
-    content?: string | null;
 }
 
 export interface SourcesResponse {
