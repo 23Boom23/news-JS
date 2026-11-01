@@ -31,9 +31,9 @@ npm run build
 
 The production build is written to `dist/`. The TypeScript project enables `strict` and `noImplicitAny`; ESLint enables `@typescript-eslint/no-explicit-any`. The code uses interfaces for API data, an endpoint enum, a generic response loader, union types for nullable API fields, access modifiers on classes, and `Partial`, `Pick`, and `Readonly` utility types.
 
-## Design changes
+## Layout
 
-The starter's dark list layout has been replaced with an editorial style: a clear source selector, image-led article cards, loading and empty states, and a responsive grid that changes from one column on small screens to three columns on wide screens. Source controls are buttons with `aria-pressed`; article links open safely in a new tab. The footer includes the author's GitHub, the creation year, and the RS School logo and course link.
+The starter's CSS and article/source templates are retained. The application adds a loading and empty-state message, keyboard access to the source selector, and the required footer links and logo.
 
 ## Repository workflow
 

@@ -3,29 +3,35 @@ import { NewsSource } from '../../../types';
 
 class Sources {
     private readonly container: HTMLElement;
+    private readonly template: HTMLTemplateElement;
 
     public constructor() {
         const container: HTMLElement | null = document.querySelector<HTMLElement>('.sources');
-        if (!container) throw new Error('Sources element is missing');
+        const template: HTMLTemplateElement | null = document.querySelector<HTMLTemplateElement>('#sourceItemTemp');
+        if (!container || !template) throw new Error('Sources markup is missing');
         this.container = container;
+        this.template = template;
     }
 
     public draw(sources: ReadonlyArray<Readonly<NewsSource>>): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         sources.forEach((source: Readonly<NewsSource>): void => {
-            const button: HTMLButtonElement = document.createElement('button');
-            button.className = 'source__item';
-            button.type = 'button';
-            button.dataset.sourceId = source.id;
-            button.textContent = source.name;
-            fragment.append(button);
+            const clone: DocumentFragment = this.template.content.cloneNode(true) as DocumentFragment;
+            const item: HTMLElement | null = clone.querySelector<HTMLElement>('.source__item');
+            const name: HTMLElement | null = clone.querySelector<HTMLElement>('.source__item-name');
+            if (!item || !name) throw new Error('Source template is incomplete');
+            item.dataset.sourceId = source.id;
+            item.setAttribute('role', 'button');
+            item.tabIndex = 0;
+            name.textContent = source.name;
+            fragment.append(clone);
         });
         this.container.replaceChildren(fragment);
     }
 
     public select(sourceId: string): void {
-        this.container.querySelectorAll<HTMLButtonElement>('.source__item').forEach((button: HTMLButtonElement): void => {
-            button.setAttribute('aria-pressed', String(button.dataset.sourceId === sourceId));
+        this.container.querySelectorAll<HTMLElement>('.source__item').forEach((item: HTMLElement): void => {
+            item.setAttribute('aria-pressed', String(item.dataset.sourceId === sourceId));
         });
     }
 }

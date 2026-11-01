@@ -11,12 +11,18 @@ class App {
         const sourcesElement: HTMLElement | null = document.querySelector<HTMLElement>('.sources');
         if (!sourcesElement) throw new Error('Sources element is missing');
 
-        sourcesElement.addEventListener('click', (event: MouseEvent): void => {
-            if (!(event.target instanceof Element)) return;
-            const button: HTMLButtonElement | null = event.target.closest<HTMLButtonElement>('.source__item');
-            if (!button || !sourcesElement.contains(button)) return;
-            const sourceId: string | undefined = button.dataset.sourceId;
+        const selectSource = (target: EventTarget | null): void => {
+            if (!(target instanceof Element)) return;
+            const item: HTMLElement | null = target.closest<HTMLElement>('.source__item');
+            if (!item || !sourcesElement.contains(item)) return;
+            const sourceId: string | undefined = item.dataset.sourceId;
             if (sourceId) void this.showNews(sourceId);
+        };
+        sourcesElement.addEventListener('click', (event: MouseEvent): void => selectSource(event.target));
+        sourcesElement.addEventListener('keydown', (event: KeyboardEvent): void => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            selectSource(event.target);
         });
 
         void this.loadSources();
