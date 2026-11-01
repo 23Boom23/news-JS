@@ -37,4 +37,4 @@ The starter's dark list layout has been replaced with an editorial style: a clea
 
 ## Repository workflow
 
-For the course submission, fork the original repository into your GitHub account, push the `news-api` branch, deploy its `dist/` output with GitHub Pages, and open a pull request **from `news-api` to `main` in your own fork**. Keep the pull request open for cross-check and submit its URL in RS App. Do not merge it before review.
+For the course submission, fork the original repository into your GitHub account and point `origin` at that fork. Push the `news-api` branch, then run `npm run deploy` to publish `dist/` to the fork's `gh-pages` branch. Open a pull request **from `news-api` to `main` in your own fork**. Keep the pull request open for cross-check and submit its URL in RS App. Do not merge it before review.

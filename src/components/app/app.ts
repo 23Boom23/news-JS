@@ -5,7 +5,6 @@ import { NewsSource, SourcesResponse } from '../../types';
 class App {
     private readonly controller: AppController = new AppController();
     private readonly view: AppView = new AppView();
-    private selectedSource = '';
     private requestId = 0;
 
     public start(): void {
@@ -17,7 +16,7 @@ class App {
             const button: HTMLButtonElement | null = event.target.closest<HTMLButtonElement>('.source__item');
             if (!button || !sourcesElement.contains(button)) return;
             const sourceId: string | undefined = button.dataset.sourceId;
-            if (sourceId && sourceId !== this.selectedSource) void this.showNews(sourceId);
+            if (sourceId) void this.showNews(sourceId);
         });
 
         void this.loadSources();
@@ -41,8 +40,8 @@ class App {
 
     private async showNews(sourceId: string): Promise<void> {
         const currentRequest: number = ++this.requestId;
-        this.selectedSource = sourceId;
         this.view.selectSource(sourceId);
+        this.view.clearNews();
         this.view.setStatus('Loading articles…');
         try {
             const response = await this.controller.getNews(sourceId);

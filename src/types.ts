@@ -15,7 +15,7 @@ export interface NewsSource {
 }
 
 export interface Article {
-    source: Pick<NewsSource, 'name'> & Partial<Pick<NewsSource, 'id'>>;
+    source: Pick<NewsSource, 'name'> & { id: string | null };
     author: string | null;
     title: string;
     description: string | null;
@@ -77,6 +77,7 @@ export function isArticlesResponse(value: unknown): value is ArticlesResponse {
                 isRecord(article) &&
                 isRecord(article.source) &&
                 typeof article.source.name === 'string' &&
+                (typeof article.source.id === 'string' || article.source.id === null) &&
                 typeof article.title === 'string' &&
                 typeof article.url === 'string' &&
                 typeof article.publishedAt === 'string' &&

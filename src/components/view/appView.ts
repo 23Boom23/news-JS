@@ -18,6 +18,10 @@ export class AppView {
         this.setStatus(articles.length ? '' : 'No articles are available for this source.');
     }
 
+    public clearNews(): void {
+        this.news.draw([]);
+    }
+
     public drawSources(sources: ReadonlyArray<Readonly<NewsSource>>): void {
         this.sources.draw(sources);
     }
